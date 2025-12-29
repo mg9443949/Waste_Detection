@@ -6,6 +6,7 @@ from PIL import Image
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
+import os
 
 # =====================================================
 # CONFIG
@@ -121,5 +122,6 @@ def video_feed():
 # RUN
 # =====================================================
 if __name__ == "__main__":
-    print("🚀 Flask Server running at http://0.0.0.0:5000")
-    app.run(host="0.0.0.0", port=5000, threaded=True)
+    port = int(os.environ.get("PORT", 5000))
+    print(f"🚀 Server running on port {port}")
+    app.run(host="0.0.0.0", port=port)
